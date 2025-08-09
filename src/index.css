@@ -2,41 +2,74 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Gaming Panel Design System - Dark theme with neon accents */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Gaming Dark Theme */
+    --background: 222 24% 6%;
+    --foreground: 210 40% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 222 20% 8%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 222 20% 8%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Gaming Green Primary */
+    --primary: 142 76% 45%;
+    --primary-foreground: 222 24% 6%;
+    --primary-glow: 142 76% 55%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Dark Gaming Secondary */
+    --secondary: 217 19% 18%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 217 19% 15%;
+    --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 217 19% 20%;
+    --accent-foreground: 210 40% 98%;
 
+    /* Gaming Alert Colors */
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
+    
+    --warning: 38 92% 50%;
+    --warning-foreground: 222 24% 6%;
+    
+    --success: 142 76% 45%;
+    --success-foreground: 222 24% 6%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 217 19% 15%;
+    --input: 217 19% 12%;
+    --ring: 142 76% 45%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Gaming-specific colors */
+    --online: 142 76% 45%;
+    --offline: 0 84% 60%;
+    --loading: 38 92% 50%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)), hsl(217 19% 10%));
+    --gradient-border: linear-gradient(90deg, hsl(var(--primary) / 0.2), hsl(var(--primary) / 0.1));
+    
+    /* Glows and shadows */
+    --glow-primary: 0 0 20px hsl(var(--primary) / 0.3);
+    --glow-success: 0 0 20px hsl(var(--success) / 0.3);
+    --glow-warning: 0 0 20px hsl(var(--warning) / 0.3);
+    --glow-destructive: 0 0 20px hsl(var(--destructive) / 0.3);
+    
+    --shadow-gaming: 0 4px 20px hsl(var(--primary) / 0.1);
+    --shadow-card: 0 8px 32px hsl(222 24% 3% / 0.4);
+    
+    /* Transitions */
+    --transition-gaming: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-glow: box-shadow 0.3s ease;
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +133,64 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  
+  /* Gaming Panel specific styles */
+  .font-mono {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+  }
+  
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+  
+  .glow-success {
+    box-shadow: var(--glow-success);
+  }
+  
+  .glow-warning {
+    box-shadow: var(--glow-warning);
+  }
+  
+  .glow-destructive {
+    box-shadow: var(--glow-destructive);
+  }
+  
+  .gaming-card {
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-card);
+    border: 1px solid hsl(var(--border));
+    transition: var(--transition-gaming);
+  }
+  
+  .gaming-card:hover {
+    border-color: hsl(var(--primary) / 0.3);
+    box-shadow: var(--shadow-gaming);
+  }
+  
+  .status-online {
+    color: hsl(var(--online));
+  }
+  
+  .status-offline {
+    color: hsl(var(--offline));
+  }
+  
+  .status-loading {
+    color: hsl(var(--loading));
+  }
+  
+  .bg-online {
+    background-color: hsl(var(--online));
+  }
+  
+  .bg-offline {
+    background-color: hsl(var(--offline));
+  }
+  
+  .bg-loading {
+    background-color: hsl(var(--loading));
   }
 }
